@@ -3,6 +3,7 @@
 # Первый ход определяется жеребьёвкой. За один ход можно забрать не более чем 28 конфет.
 # Все конфеты оппонента достаются сделавшему последний ход.
 # Сколько конфет нужно взять первому игроку, чтобы забрать все конфеты у своего конкурента?
+# Добавьте игру против бота
 
 import random
 
@@ -26,20 +27,24 @@ def letsplay(n, m, players, messages):
     else:
         letter = ''
     while n > 0:
-        print(f'{players[count%2]}, {random.choice(messages)}')
-        move = int(input())
-        if move > n or move > m:
-            print(
-                f'Это слишком много! Вы можете взять не более {m} конфет{letter}, у нас всего {n} конфет{letter}')
-            trynum = 3
-            while trynum > 0:
-                if n >= move <= m:
-                    break
-                print(f'Попробуйте еще раз! У Вас {trynum} попытки.')
-                move = int(input())
-                trynum -= 1
-            else:
-                return print(f'Очень жаль, у Вас больше нет попыток!')
+        if not count % 2:
+            move = random.randint(1, m)
+            print(f'Я забираю {move} конфет')
+        else:
+            print(f'{players[0]}, {random.choice(messages)}')
+            move = int(input())
+            if move > n or move > m:
+                print(
+                    f'Это слишком много! Вы можете взять не более {m} конфет{letter}, у нас всего {n} конфет{letter}')
+                trynum = 3
+                while trynum > 0:
+                    if n >= move <= m:
+                        break
+                    print(f'Попробуйте еще раз! У Вас {trynum} попытки.')
+                    move = int(input())
+                    trynum -= 1
+                else:
+                    return print(f'Очень жаль, у Вас больше нет попыток!')
         n -= move
         if n > 0:
             print(f'Осталось {n} конфет{letter} на столе')
@@ -51,7 +56,8 @@ def letsplay(n, m, players, messages):
 
 print(greeting)
 player1 = input('Первый игрок, как Вас зовут? -> ')
-player2 = input('Второй игрок, тоже представьтесь пожалуйста. -> ')
+player2 = 'Аркаша'
+print(f'Привет, меня зовут {player2}. Сегодня я буду твоим противником.')
 players = [player1, player2]
 n = 2021
 m = 28
