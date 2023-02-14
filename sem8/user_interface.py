@@ -32,10 +32,10 @@ def user_choose():
             change_class()
     elif choose == 3:
         delete_student()
-    elif choose == 4:
-        to_console()
-    elif choose == 5:
-        to_csv()
+    # elif choose == 4:
+        # to_console()
+    # elif choose == 5:
+        # to_csv()
     elif choose == 6:
         return
     else:

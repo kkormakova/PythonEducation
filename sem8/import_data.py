@@ -13,7 +13,7 @@ def create_student():
     class_name = input("Введите номер класса ученика: ")
     global all_classes
     if class_name not in all_classes:
-        create_cl(class_name)
+        create_class(class_name)
     all_classes[class_name].append(id_student)
     st_data = [surname, name, otch, birth, tel, adress, class_name]
     global all_students
@@ -22,7 +22,7 @@ def create_student():
     id_student += 1
 
 
-def create_cl(name_class=False):
+def create_class(name_class=False):
     if not name_class:
         name_class = input("Введите номер класса: ")
     all_classes[name_class] = []
