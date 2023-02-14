@@ -1,5 +1,5 @@
-import export_data as ed
-import import_data as impd
+from export_data import *
+from import_data import *
 
 
 def user_choose():
